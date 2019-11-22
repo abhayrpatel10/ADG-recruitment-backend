@@ -4,6 +4,7 @@ const nodemailer=require('nodemailer')
 const User=require('../models/user')
 const mongoose=require('mongoose')
 const auth=require('../middleware/auth')
+var questions=require('../data/techquestions')
 
 
 
@@ -133,11 +134,28 @@ router.post('/logoutAll',auth,async(req,res)=>{
     }
 })
 
-router.post('/technical',(req,res)=>{
+router.post('/technical',auth,(req,res)=>{
+    
+    var min = 0
+    var max = questions.length//replace with questions.length after questions added
 
+    var random=[]
+    while(random.length!=8){
+        var x=Math.floor(Math.random() * (max - min + 1)) + min;
+        if(!random.includes(x)){
+            random.push(x)
+        }
+    }
+
+    var data=[]
+    for(var i=0;i<8;i++){
+        data.push(questions[random[i]])
+    }
+    console.log(data)
+    res.send(JSON.stringify(data))
 })
 
-router.post('/technical/finish',(req,res)=>{
+router.post('/technical/submit',(req,res)=>{
 
 })
 
@@ -151,6 +169,23 @@ router.post('/management',auth,(req,res)=>{
 
 })
 
+router.post('/management/submit',auth,async (req,res)=>{
+
+    if(req.user.management.attempted==true){
+        return res.send('Section alreadt attempted')
+    }
+    req.user.management.others=req.data
+    req.user.management.attempted=true
+
+    try{
+        await req.user.save()
+        res.status(200).send('Management section saved successfully')
+    }catch(e){
+        res.status(400).send(e)
+    }
+    
+})
+
 router.post('/design',auth,(req,res)=>{
     var questions={
         "question1":"How Loren ipsum",
@@ -159,6 +194,20 @@ router.post('/design',auth,(req,res)=>{
     }
     res.status(200).send(questions)
 
+})
+
+router.post('/design/submit',auth,async(req,res)=>{
+    if(req.user.design.attempted==true){
+        return res.send('Section already attempted')
+    }
+    req.user.design.attempted=true
+    req.user.design.others=req.data
+    try{
+        await req.user.save()
+        res.status(200).send('Design section saved successfully')
+    }catch(e){
+        res.status(400).send(e)
+    }
 })
 
 module.exports=router

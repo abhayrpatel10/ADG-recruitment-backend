@@ -49,16 +49,9 @@ const userSchema=new mongoose.Schema({
             type:Boolean,
             default:false
         },
-        others:[{
-            question:{
-                type:String,
-            },
-            answer:{
-                type:String
-            }
+        others:{
+            type:Object
         }
-    
-        ]
 
     },
     technical:{
