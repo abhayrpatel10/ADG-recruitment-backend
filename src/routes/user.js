@@ -5,6 +5,7 @@ const User=require('../models/user')
 const mongoose=require('mongoose')
 const auth=require('../middleware/auth')
 var questions=require('../data/techquestions')
+var ans=require('../data/answers')
 
 
 
@@ -124,15 +125,7 @@ router.post('/logout',auth,async(req,res)=>{
     }
 })
 
-router.post('/logoutAll',auth,async(req,res)=>{
-    try{
-        req.user.tokens=[]
-        await req.user.save()
-        res.send('Logged Out of All sessions')
-    }catch(e){
-        res.status(400).send('Could not Loggout of all Devices')
-    }
-})
+
 
 router.post('/technical',auth,(req,res)=>{
     
@@ -155,7 +148,29 @@ router.post('/technical',auth,(req,res)=>{
     res.send(JSON.stringify(data))
 })
 
-router.post('/technical/submit',(req,res)=>{
+router.post('/technical/submit',auth,async(req,res)=>{
+    if(req.user.technical.attempted==true){
+        return res.send('Section already attempted')
+    }
+    var count=0
+    var options=req.body.questions.options.split(",")
+    var ids=req.body.questions.ids.split(",")
+    for(var i=0;i<8;i++){
+        if(options[i]==ans[ids[i]-1].answer){
+            count++
+        }
+    }
+    req.user.technical.score=count
+    req.user.technical.attempted=true
+    req.user.technical.coding=req.body.code
+
+    try{
+        await req.user.save()
+        res.status(200).send('Techincal section saved succesfully')
+    }catch(e){
+        res.status(400).send(e)
+    }
+    
 
 })
 
@@ -172,7 +187,7 @@ router.post('/management',auth,(req,res)=>{
 router.post('/management/submit',auth,async (req,res)=>{
 
     if(req.user.management.attempted==true){
-        return res.send('Section alreadt attempted')
+        return res.send('Section already attempted')
     }
     req.user.management.others=req.data
     req.user.management.attempted=true

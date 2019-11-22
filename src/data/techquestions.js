@@ -1,7 +1,7 @@
 var questions=[]
 
 var q1={
-    "id":001,
+    "id":1,
     "Question":"Lorem ipsum",
     "Option 1":"abhay",
     "Option 2":"abahy",
@@ -11,7 +11,7 @@ var q1={
 
 
 var q2={
-    "id":001,
+    "id":2,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -19,16 +19,9 @@ var q2={
     "Option 4":"All of the above"
 }
 
+
 var q3={
-    "id":001,
-    "Question 3":"fiuvgbedvgsbfsfv",
-    "option 1":"wfjniosrfgsf",
-    "option 2":"efgbouinkfbsougfbvsuiofbiusof",
-    "option 3":"wgfbuisbguysvfs",
-    "option 3":"suijkgsryifvwvbfsyfs"
-}
-var q3={
-    "id":001,
+    "id":3,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -36,7 +29,7 @@ var q3={
     "Option 4":"All of the above"
 }
 var q4={
-    "id":001,
+    "id":4,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -44,7 +37,7 @@ var q4={
     "Option 4":"All of the above"
 }
 var q5={
-    "id":001,
+    "id":5,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -52,7 +45,7 @@ var q5={
     "Option 4":"All of the above"
 }
 var q6={
-    "id":001,
+    "id":6,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -60,7 +53,7 @@ var q6={
     "Option 4":"All of the above"
 }
 var q7={
-    "id":001,
+    "id":7,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -68,7 +61,7 @@ var q7={
     "Option 4":"All of the above"
 }
 var q8={
-    "id":001,
+    "id":8,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -76,7 +69,7 @@ var q8={
     "Option 4":"All of the above"
 }
 var q9={
-    "id":001,
+    "id":26,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -84,7 +77,7 @@ var q9={
     "Option 4":"All of the above"
 }
 var q10={
-    "id":001,
+    "id":10,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -92,7 +85,7 @@ var q10={
     "Option 4":"All of the above"
 }
 var q11={
-    "id":001,
+    "id":11,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -100,7 +93,7 @@ var q11={
     "Option 4":"All of the above"
 }
 var q12={
-    "id":001,
+    "id":12,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -108,7 +101,7 @@ var q12={
     "Option 4":"All of the above"
 }
 var q13={
-    "id":001,
+    "id":13,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -116,7 +109,7 @@ var q13={
     "Option 4":"All of the above"
 }
 var q14={
-    "id":001,
+    "id":14,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",
@@ -124,7 +117,7 @@ var q14={
     "Option 4":"All of the above"
 }
 var q15={
-    "id":001,
+    "id":15,
     "Question":"Which is true about lambda oprators in Python?",
     "Option 1":"They are used to declare anonymous functions in Python",
     "Option 2":"They can take any number of arguments",

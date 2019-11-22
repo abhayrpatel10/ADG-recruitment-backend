@@ -62,16 +62,9 @@ const userSchema=new mongoose.Schema({
         score:{
             type:Number,
         },
-        coding:[
-            {
-                question:{
-                    type:String
-                },
-                answer:{
-                    type:String
-                }
-            }
-        ]
+        coding:{
+            type:Object
+        }
     },
     design:{
         attempted:{
@@ -81,16 +74,9 @@ const userSchema=new mongoose.Schema({
         workurl:{
             type:String
         },
-        other:[
-            {
-                question:{
-                    type:String
-                },
-                answer:{
-                    type:String
-                }
-            }
-        ]
+        others:{
+            type:Object
+        }
 
     },
     tokens:[{

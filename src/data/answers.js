@@ -1,0 +1,81 @@
+ans=[]
+
+data1={
+    id:1,
+    "answer":"a"
+}
+
+data2={
+    id:2,
+    "answer":"a"
+}
+data3={
+    id:3,
+    "answer":"a"
+}
+data4={
+    id:4,
+    "answer":"a"
+}
+data5={
+    id:5,
+    "answer":"a"
+}
+data6={
+    id:6,
+    "answer":"a"
+}
+data7={
+    id:7,
+    "answer":"a"
+}
+data8={
+    id:8,
+    "answer":"a"
+}
+data9={
+    id:11,
+    "answer":"a"
+}
+data10={
+    id:12,
+    "answer":"a"
+}
+data11={
+    id:13,
+    "answer":"a"
+}
+data12={
+    id:15,
+    "answer":"a"
+}
+data13={
+    id:14,
+    "answer":"a"
+}
+data14={
+    id:45,
+    "answer":"a"
+}
+data15={
+    id:64,
+    "answer":"a"
+}
+
+ans.push(data1)
+ans.push(data2)
+ans.push(data3)
+ans.push(data4)
+ans.push(data5)
+ans.push(data6)
+ans.push(data7)
+ans.push(data8)
+ans.push(data9)
+ans.push(data10)
+ans.push(data11)
+ans.push(data12)
+ans.push(data13) 
+ans.push(data14)
+ans.push(data15)
+
+module.exports=ans
