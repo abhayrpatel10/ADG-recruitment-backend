@@ -250,4 +250,8 @@ router.post('/design/submit',auth,async(req,res)=>{
     }
 })
 
+router.get('/',(req,res)=>{
+    res.send('Hello from ADG')
+})
+
 module.exports=router
