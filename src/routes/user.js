@@ -23,13 +23,13 @@ router.post('/signup',async(req,res)=>{
         var transporter=nodemailer.createTransport({
             service:'gmail.com',
             auth:{
-                user:'alandwayne90@gmail.com',
-                pass:'niggerswithattitude'
+                user:'appledevelopersgroup@gmail.com',
+                pass:'Adgvit_2019'
             }
         })
 
         var mailOptions={
-            from:'alandwayne90@gmail.com',
+            from:'appledevelopersgroup@gmail.com',
             to:req.body.email,
             subject:'verification',
             text:'Click this link to verify your account\n '+ 'https://adg-backend-rec-2019.herokuapp.com/verify/'+user._id
@@ -66,7 +66,7 @@ router.post('/resend',async(req,res)=>{
         service:'gmail.com',
         auth:{
             user:process.env.EMAILID,
-            pass:process.env.PASSWORD
+            pass:'Adgvit_2019'
         }
     })
 
