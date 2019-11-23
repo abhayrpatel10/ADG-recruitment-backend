@@ -23,8 +23,8 @@ router.post('/signup',async(req,res)=>{
         var transporter=nodemailer.createTransport({
             service:'gmail.com',
             auth:{
-                user:process.env.EMAILID,
-                pass:process.env.PASSWORD
+                user:'appledevelopersgroup@gmail.com',
+                pass:'AppleGroup_namps'
             }
         })
 
