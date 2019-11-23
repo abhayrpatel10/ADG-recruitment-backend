@@ -1,3 +1,6 @@
+//<========================WARNING======================================> 
+//Questions and respective answers to be added in the same order in the array
+
 var questions=[]
 
 var q1={

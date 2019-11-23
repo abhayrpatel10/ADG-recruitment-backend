@@ -8,6 +8,11 @@ var questions=require('../data/techquestions')
 var ans=require('../data/answers')
 
 
+//<=============SIGNUP==============================>
+//Name,VIT email,phone no,Reg no ,password is taken and saved to Database
+//a verification email is sent to emailID
+//If not verified the user won't be able to login
+//All API documented using POSTMAN,check the docs at https://documenter.getpostman.com/view/5235222/SW7c17Cp?version=latest#3ca20c26-6db1-4658-a652-cd14d6e55fc6
 
 router.post('/signup',async(req,res)=>{
     const user=new User(req.body)
@@ -18,13 +23,13 @@ router.post('/signup',async(req,res)=>{
         var transporter=nodemailer.createTransport({
             service:'gmail.com',
             auth:{
-                user:'alandwayne90@gmail.com',
-                pass:'niggerswithattitude'
+                user:process.env.EMAILID,
+                pass:process.env.PASSWORD
             }
         })
 
         var mailOptions={
-            from:'alandwayne90@gmail.com',
+            from:'appledevelopersgroup@gmail.com',
             to:req.body.email,
             subject:'verification',
             text:'Click this link to verify your account\n '+ 'http://localhost:3000/verify/'+user._id
@@ -49,19 +54,24 @@ router.post('/signup',async(req,res)=>{
 
 
 })
+//<============RESEND email verification===================>
+//takes only the registered email
 
 router.post('/resend',async(req,res)=>{
     const user=await User.findOne({email:req.body.email})
+    if(!user){
+        return res.send('User not found')
+    }
     var transporter=nodemailer.createTransport({
         service:'gmail.com',
         auth:{
-            user:'alandwayne90@gmail.com',
-            pass:'niggerswithattitude'
+            user:process.env.EMAILID,
+            pass:process.env.PASSWORD
         }
     })
 
     var mailOptions={
-        from:'alandwayne90@gmail.com',
+        from:process.env.EMAILID,
         to:req.body.email,
         subject:'verification',
         text:'Click this link to verify your account\n '+ 'http://localhost:3000/verify/'+user._id
@@ -78,6 +88,8 @@ router.post('/resend',async(req,res)=>{
     })
 
 })
+
+//<===============================EMAIL VERIFICATION=======================
 
 router.get('/verify/:id',async (req,res)=>{
     const id=req.params.id
@@ -113,6 +125,8 @@ router.post('/login',async(req,res)=>{
 
 })
 
+//<===============LOGOUT -basically deletes the token from the array ==========================
+
 router.post('/logout',auth,async(req,res)=>{
     try{
         req.user.tokens=req.user.tokens.filter((token)=>{
@@ -125,7 +139,7 @@ router.post('/logout',auth,async(req,res)=>{
     }
 })
 
-
+//<=================TECHNICAL - token to be passed as header(Authorization) and the user is identified and Questions are sent back
 
 router.post('/technical',auth,(req,res)=>{
     
@@ -147,6 +161,8 @@ router.post('/technical',auth,(req,res)=>{
     console.log(data)
     res.send(JSON.stringify(data))
 })
+
+//<====================TECHNICAL SUBMIT QUIZ=====================================
 
 router.post('/technical/submit',auth,async(req,res)=>{
     if(req.user.technical.attempted==true){
@@ -174,6 +190,9 @@ router.post('/technical/submit',auth,async(req,res)=>{
 
 })
 
+//=======================MANAGEMENT QUESTIONS ========================================
+
+
 router.post('/management',auth,(req,res)=>{
     var questions={
         "question1":"How Loren ipsum",
@@ -183,6 +202,8 @@ router.post('/management',auth,(req,res)=>{
     res.status(200).send(questions)
 
 })
+
+//============================MANAGEMENT SUBMISSION========================================
 
 router.post('/management/submit',auth,async (req,res)=>{
 
@@ -201,6 +222,8 @@ router.post('/management/submit',auth,async (req,res)=>{
     
 })
 
+//===================================DESIGN QUESTIONS======================================
+
 router.post('/design',auth,(req,res)=>{
     var questions={
         "question1":"How Loren ipsum",
@@ -210,6 +233,8 @@ router.post('/design',auth,(req,res)=>{
     res.status(200).send(questions)
 
 })
+
+//==================================DESIGN SUBMISSION==========================================
 
 router.post('/design/submit',auth,async(req,res)=>{
     if(req.user.design.attempted==true){

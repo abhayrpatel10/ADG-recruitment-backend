@@ -1,6 +1,9 @@
 const jwt=require('jsonwebtoken')
 const User=require('../models/user')
 
+//JWT token is passed as a header,the token is verified and if user exits with that token and is authorized this middleware attaches the user in req.user
+//Authentication middleware
+
 const auth=async(req,res,next)=>{
     try{
         const token=req.header('Authorization').replace('Bearer ','')
