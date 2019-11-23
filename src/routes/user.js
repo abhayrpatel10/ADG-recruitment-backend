@@ -32,7 +32,7 @@ router.post('/signup',async(req,res)=>{
             from:'appledevelopersgroup@gmail.com',
             to:req.body.email,
             subject:'verification',
-            text:'Click this link to verify your account\n '+ 'https://adg-backend-rec-2019.herokuapp.com/'+user._id
+            text:'Click this link to verify your account\n '+ 'https://adg-backend-rec-2019.herokuapp.com/verify'+user._id
         }
         
         transporter.sendMail(mailOptions,function(err,response){
@@ -74,7 +74,7 @@ router.post('/resend',async(req,res)=>{
         from:process.env.EMAILID,
         to:req.body.email,
         subject:'verification',
-        text:'Click this link to verify your account\n '+ 'https://adg-backend-rec-2019.herokuapp.com/'+user._id
+        text:'Click this link to verify your account\n '+ 'https://adg-backend-rec-2019.herokuapp.com/verify'+user._id
     }
     
     transporter.sendMail(mailOptions,function(err,response){
