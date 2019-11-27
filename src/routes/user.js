@@ -91,17 +91,17 @@ router.post('/resend',async(req,res)=>{
 
 //<===============================EMAIL VERIFICATION=======================
 
-router.get('/verify/:id',async (req,res)=>{
-    const id=req.params.id
-    const _id=mongoose.Types.ObjectId(id)
+// router.get('/verify/:id',async (req,res)=>{
+//     const id=req.params.id
+//     const _id=mongoose.Types.ObjectId(id)
 
-    await User.findByIdAndUpdate(_id,{active:true},function(err,response){
-        if(err){
-            res.status(400).send(err)
-        }
-        res.status(200).send('<h1> Email verified successfully. Please proceed to login')
-    })
-})
+//     await User.findByIdAndUpdate(_id,{active:true},function(err,response){
+//         if(err){
+//             res.status(400).send(err)
+//         }
+//         res.status(200).send('<h1> Email verified successfully. Please proceed to login')
+//     })
+// })
 
 router.post('/login',async(req,res)=>{
     try{
@@ -142,24 +142,43 @@ router.post('/logout',auth,async(req,res)=>{
 //<=================TECHNICAL - token to be passed as header(Authorization) and the user is identified and Questions are sent back
 
 router.post('/technical',auth,(req,res)=>{
-    
-    var min = 0
-    var max = questions.length//replace with questions.length after questions added
 
-    var random=[]
-    while(random.length!=8){
-        var x=Math.floor(Math.random() * (max - min + 1)) + min;
-        if(!random.includes(x)){
-            random.push(x)
+    if(req.user.technical.attempted==true){
+        return res.send('Section already attempted')
+    }
+
+    if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
+        var questions={
+            "question1":"How Loren ipsum 18 github link",
+            "question2":"How lorem ipsum 18 linked in link",
+            "quetsion3":"how lorem ipsum 18"
         }
-    }
+        res.status(200).send(questions)
 
-    var data=[]
-    for(var i=0;i<8;i++){
-        data.push(questions[random[i]])
-    }
-    console.log(data)
-    res.send(JSON.stringify(data))
+    }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
+        var min = 0
+        var max = questions.length//replace with questions.length after questions added
+
+        var random=[]
+        while(random.length!=8){
+            var x=Math.floor(Math.random() * (max - min + 1)) + min;
+            if(!random.includes(x)){
+                random.push(x)
+            }
+        }
+
+        var data=[]
+        for(var i=0;i<8;i++){
+            data.push(questions[random[i]])
+        }
+        console.log(data)
+        res.send(JSON.stringify(data))
+            
+        }else{
+            res.send('Invalid Year/Access')
+        }
+    
+    
 })
 
 //<====================TECHNICAL SUBMIT QUIZ=====================================
@@ -194,12 +213,29 @@ router.post('/technical/submit',auth,async(req,res)=>{
 
 
 router.post('/management',auth,(req,res)=>{
-    var questions={
-        "question1":"How Loren ipsum",
-        "question2":"How lorem ipsum",
-        "quetsion3":"how lorem ipsum"
+
+    if(req.user.management.attempted==true){
+        return res.send('Section already attempted')
     }
-    res.status(200).send(questions)
+    if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
+        var questions={
+            "question1":"How Loren ipsum 18",
+            "question2":"How lorem ipsum 18",
+            "quetsion3":"how lorem ipsum 18"
+        }
+        res.status(200).send(questions)
+
+    }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
+        var questions={
+            "question1":"How Loren ipsum 19",
+            "question2":"How lorem ipsum 19",
+            "quetsion3":"how lorem ipsum 19"
+        }
+        res.status(200).send(questions)
+    }else{
+        res.send('Invalid Year')
+    }
+   
 
 })
 
@@ -225,12 +261,27 @@ router.post('/management/submit',auth,async (req,res)=>{
 //===================================DESIGN QUESTIONS======================================
 
 router.post('/design',auth,(req,res)=>{
-    var questions={
-        "question1":"How Loren ipsum",
-        "question2":"How lorem ipsum",
-        "quetsion3":"how lorem ipsum"
+    if(req.user.design.attempted==true){
+        return res.send('Section already attempted')
     }
-    res.status(200).send(questions)
+    if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
+        var questions={
+            "question1":"How Loren ipsum 18",
+            "question2":"How lorem ipsum 18",
+            "quetsion3":"how lorem ipsum 18"
+        }
+        res.status(200).send(questions)
+
+    }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
+        var questions={
+            "question1":"How Loren ipsum 19",
+            "question2":"How lorem ipsum 19",
+            "quetsion3":"how lorem ipsum 19"
+        }
+        res.status(200).send(questions)
+    }else{
+        res.send('Invalid Year')
+    }
 
 })
 
