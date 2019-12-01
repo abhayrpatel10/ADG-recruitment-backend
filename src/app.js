@@ -2,7 +2,9 @@ const express=require('express')
 const userroutes=require('./routes/user')
 require('dotenv').config();
 require('./db/mongoose')
+var cors=require('cors')
 app=express()
+app.use(cors())
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({
     extended: true
