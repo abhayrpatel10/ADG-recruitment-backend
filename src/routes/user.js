@@ -128,7 +128,8 @@ router.post('/login',async(req,res)=>{
             email:user.email,
             design:user.design.attempted,
             technical:user.design.attempted,
-            management:user.design.attempted
+            management:user.design.attempted,
+            regno:user.regno
         }
         res.status(200).send(data)
     }catch(e){
