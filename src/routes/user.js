@@ -103,6 +103,19 @@ router.post('/resend',async(req,res)=>{
 //     })
 // })
 
+//============================Forgot Password=================================================
+
+router.post('/forgotpassword',async(req,res)=>{
+    const email=req.body.email
+    try{
+        const user=await User.findOne({email})
+        console.log(user)
+    }catch(e){
+        res.status(400).send(e)
+    }
+    
+})
+
 router.post('/login',async(req,res)=>{
     try{
         const user=await User.findByCredentials(req.body.email,req.body.password)
