@@ -64,7 +64,8 @@ const userSchema=new mongoose.Schema({
             default:0
         },
         coding:{
-            type:Object
+            type:String,
+            
         },
         count:{
             type:Number,

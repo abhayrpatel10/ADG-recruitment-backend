@@ -4,7 +4,7 @@ const nodemailer=require('nodemailer')
 const User=require('../models/user')
 const mongoose=require('mongoose')
 const auth=require('../middleware/auth')
-var questions=require('../data/techquestions')
+var quest=require('../data/techquestions')
 var ans=require('../data/answers')
 
 
@@ -130,7 +130,8 @@ router.post('/login',async(req,res)=>{
             design:user.design.attempted,
             technical:user.design.attempted,
             management:user.design.attempted,
-            regno:user.regno
+            regno:user.regno,
+            name:user.name
         }
         res.status(200).send(data)
     }catch(e){
@@ -172,10 +173,10 @@ router.post('/technical',auth,(req,res)=>{
 
     }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
         var min = 0
-        var max = questions.length//replace with questions.length after questions added
+        var max = quest.length//replace with questions.length after questions added
 
         var random=[]
-        while(random.length!=8){
+        while(random.length!=10){
             var x=Math.floor(Math.random() * (max - min + 1)) + min;
             if(!random.includes(x)){
                 random.push(x)
@@ -184,7 +185,7 @@ router.post('/technical',auth,(req,res)=>{
 
         var data=[]
         for(var i=0;i<8;i++){
-            data.push(questions[random[i]])
+            data.push(quest[random[i]])
         }
         console.log(data)
         res.send(JSON.stringify(data))
@@ -202,11 +203,20 @@ router.post('/technical/submit',auth,async(req,res)=>{
     if(req.user.technical.attempted==true){
         return res.send('Section already attempted')
     }
+    if(req.body.year==18){
+        try{
+            req.user.technical.coding=req.body.link
+            await req.user.save()
+            return res.status(200).send('Github linked saved successfully')
+        }catch(e){
+            res.send(e)
+        }
+    }
     
-    if(req.user.technical.count==8){
+    if(req.user.technical.count==10){
         return res.send('Section already attempted')
     }
-    if(req.user.technical.count==7){
+    if(req.user.technical.count==9){
         req.user.technical.attempted=true
     }
     
@@ -336,6 +346,38 @@ router.post('/design/submit',auth,async(req,res)=>{
     }catch(e){
         res.status(400).send(e)
     }
+})
+
+router.post('/resetpassword',async(req,res)=>{
+    const user=await User.findOne({email:req.body.email})
+    if(!user){
+        return res.send('User not found')
+    }
+    var transporter=nodemailer.createTransport({
+        service:'gmail.com',
+        auth:{
+            user:process.env.EMAILID,
+            pass:'Adgvit_2019'
+        }
+    })
+
+    var mailOptions={
+        from:process.env.EMAILID,
+        to:req.body.email,
+        subject:'Reset password',
+        text:'Click this link to change your password\n '+ 'https://adgvit-recruitment-2k19.herokuapp.com/changepassword/'+user._id
+    }
+    
+    transporter.sendMail(mailOptions,function(err,response){
+        if(err){
+            console.log(err)
+            res.status(400).send('Error in sending email')
+        }else{
+            console.log('mail sent successfully')
+            res.status(200).send({name:user.name,email:user.email})
+        }
+    })
+
 })
 
 router.get('/',(req,res)=>{
