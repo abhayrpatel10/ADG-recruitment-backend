@@ -61,9 +61,14 @@ const userSchema=new mongoose.Schema({
         },
         score:{
             type:Number,
+            default:0
         },
         coding:{
             type:Object
+        },
+        count:{
+            type:Number,
+            default:0
         }
     },
     design:{

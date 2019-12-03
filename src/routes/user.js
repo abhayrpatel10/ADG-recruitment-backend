@@ -123,7 +123,8 @@ router.post('/login',async(req,res)=>{
         if(user.active==false){
             return res.status(401).send('Email verification pending.')
         }
-        var data={loggedin:true,
+        var data={
+            loggedin:true,
             token:token,
             email:user.email,
             design:user.design.attempted,
@@ -201,21 +202,43 @@ router.post('/technical/submit',auth,async(req,res)=>{
     if(req.user.technical.attempted==true){
         return res.send('Section already attempted')
     }
-    var count=0
-    var options=req.body.questions.options.split(",")
-    var ids=req.body.questions.ids.split(",")
-    for(var i=0;i<8;i++){
-        if(options[i]==ans[ids[i]-1].answer){
-            count++
-        }
+    
+    if(req.user.technical.count==8){
+        return res.send('Section already attempted')
     }
-    req.user.technical.score=count
-    req.user.technical.attempted=true
-    req.user.technical.coding=req.body.code
+    if(req.user.technical.count==7){
+        req.user.technical.attempted=true
+    }
+    
+    var option=req.body.answer;
+    var id=req.body.id;
+    console.log(id)
+    req.user.technical.count=req.user.technical.count+1;
+    console.log(typeof(option))
+        console.log(typeof(ans[id-1].answer))
+        console.log(option)
+        console.log(ans[id-1].answer)
+    if(option==ans[id-1].answer){
+        
+        req.user.technical.score=req.user.technical.score+1;
+    }
+    // var count=0
+    // var options=req.body.questions.options.split(",")
+    // var ids=req.body.questions.ids.split(",")
+    // for(var i=0;i<8;i++){
+    //     if(options[i]==ans[ids[i]-1].answer){
+    //         count++
+    //     }
+    // }
+    // req.user.technical.score=count
+    // req.user.technical.attempted=true
+    // req.user.technical.coding=req.body.code
+
+
 
     try{
         await req.user.save()
-        res.status(200).send('Techincal section saved succesfully')
+        res.status(200).send('Question saved succesfully')
     }catch(e){
         res.status(400).send(e)
     }

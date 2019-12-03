@@ -2,64 +2,64 @@ ans=[]
 
 data1={
     id:1,
-    "answer":"a"
+    "answer":1
 }
 
 data2={
     id:2,
-    "answer":"a"
+    "answer":1
 }
 data3={
     id:3,
-    "answer":"a"
+    "answer":1
 }
 data4={
     id:4,
-    "answer":"a"
+    "answer":1
 }
 data5={
     id:5,
-    "answer":"a"
+    "answer":1
 }
 data6={
     id:6,
-    "answer":"a"
+    "answer":1
 }
 data7={
     id:7,
-    "answer":"a"
+    "answer":1
 }
 data8={
     id:8,
-    "answer":"a"
+    "answer":1
 }
 data9={
     id:11,
-    "answer":"a"
+    "answer":1
 }
 data10={
     id:12,
-    "answer":"a"
+    "answer":1
 }
 data11={
     id:13,
-    "answer":"a"
+    "answer":2
 }
 data12={
     id:15,
-    "answer":"a"
+    "answer":1
 }
 data13={
     id:14,
-    "answer":"a"
+    "answer":1
 }
 data14={
     id:45,
-    "answer":"a"
+    "answer":1
 }
 data15={
     id:64,
-    "answer":"a"
+    "answer":1
 }
 
 ans.push(data1)
