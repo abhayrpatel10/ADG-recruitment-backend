@@ -160,7 +160,7 @@ router.post('/logout',auth,async(req,res)=>{
 router.post('/technical',auth,(req,res)=>{
 
     if(req.user.technical.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
 
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
@@ -191,7 +191,7 @@ router.post('/technical',auth,(req,res)=>{
         res.send(JSON.stringify(data))
             
         }else{
-            res.send('Invalid Year/Access')
+            res.status(401).send('Invalid Year/Access')
         }
     
     
@@ -201,7 +201,7 @@ router.post('/technical',auth,(req,res)=>{
 
 router.post('/technical/submit',auth,async(req,res)=>{
     if(req.user.technical.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     if(req.body.year==18){
         try{
@@ -209,12 +209,12 @@ router.post('/technical/submit',auth,async(req,res)=>{
             await req.user.save()
             return res.status(200).send('Github linked saved successfully')
         }catch(e){
-            res.send(e)
+            res.status(409).send(e)
         }
     }
     
     if(req.user.technical.count==10){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     if(req.user.technical.count==9){
         req.user.technical.attempted=true
@@ -262,7 +262,7 @@ router.post('/technical/submit',auth,async(req,res)=>{
 router.post('/management',auth,(req,res)=>{
 
     if(req.user.management.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
@@ -280,7 +280,7 @@ router.post('/management',auth,(req,res)=>{
         }
         res.status(200).send(questions)
     }else{
-        res.send('Invalid Year')
+        res.status(401).send('Invalid Year')
     }
    
 
@@ -291,7 +291,7 @@ router.post('/management',auth,(req,res)=>{
 router.post('/management/submit',auth,async (req,res)=>{
 
     if(req.user.management.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     req.user.management.others=req.data
     req.user.management.attempted=true
@@ -309,7 +309,7 @@ router.post('/management/submit',auth,async (req,res)=>{
 
 router.post('/design',auth,(req,res)=>{
     if(req.user.design.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
@@ -327,7 +327,7 @@ router.post('/design',auth,(req,res)=>{
         }
         res.status(200).send(questions)
     }else{
-        res.send('Invalid Year')
+        res.status(401).send('Invalid Year')
     }
 
 })
@@ -336,7 +336,7 @@ router.post('/design',auth,(req,res)=>{
 
 router.post('/design/submit',auth,async(req,res)=>{
     if(req.user.design.attempted==true){
-        return res.send('Section already attempted')
+        return res.status(409).send('Section already attempted')
     }
     req.user.design.attempted=true
     req.user.design.others=req.data
