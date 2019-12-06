@@ -165,8 +165,7 @@ router.post('/technical',auth,(req,res)=>{
 
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
-            "question1":"Github Link!!",
-            "question2":"Tell us about a project that you are proud of.",
+            "question1":"Github Link!!"
         }
         res.status(200).send(questions)
 
