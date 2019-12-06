@@ -82,10 +82,10 @@ ans=[]
 
 var q1={
     "id":1,
-    "Question":"Which of the following are valid if/else statements in Python, assuming x and y are defined appropriately:",
-    "Option 1":"if x < y: print('foo'); print('bar'); print('baz')",
-    "Option 2":"if x < y: if x > 10: print('foo')",
-    "Option 3":"if x < y: print('foo') else: print('bar')",
+    "Question":"What is the output of print 'Hello World'[::-1]",
+    "Option 1":"dlroW olleH",
+    "Option 2":"world Hello",
+    "Option 3":"d",
     "Option 4":"None of the above"
 }
  
@@ -97,30 +97,30 @@ data1={
  
 var q2={
     "id":2,
-    "Question":"What is the value of this expression: 'a' + 'x' if '123'.isdigit() else 'y' + 'b'",
-    "Option 1":"’ab’",
-    "Option 2":"’axyb’",
-    "Option 3":"’ax’",
-    "Option 4":"’axb’"
+    "Question":"How many standard data types are there in Python",
+    "Option 1":"5",
+    "Option 2":"4",
+    "Option 3":"3",
+    "Option 4":"6"
 }
  
 data2={
     id:2,
-    "answer":3
+    "answer":1
 }
  
 var q3={
     "id":3,
-    "Question":"What is the output from this print() function call:print('$100 $200 $300'.count('$'),'$100 $200 $300'.count('$', 5, 10),'$100 $200 $300'.count('$', 5))",
-    "Option 1":"312",
-    "Option 2":"321",
-    "Option 3":"310",
-    "Option 4":"311"
+    "Question":"Which of these is a vector function in c++  vector<int> v",
+    "Option 1":"v.begin()",
+    "Option 2":"v.resize()",
+    "Option 3":"v.reserve()",
+    "Option 4":"All of the above"
 }
  
 data3={
     id:3,
-    "answer":1
+    "answer":4
 }
 
 
@@ -153,15 +153,15 @@ data5={
 }
 var q6={
     "id":6,
-    "Question":"What will be the output for print('cba'.maketrans('abc', '123'))",
-    "Option 1":"{97: 49, 98: 50, 99: 51}",
-    "Option 2":"{65: 49, 66: 50, 67: 51}",
-    "Option 3":"321",
-    "Option 4":"123"
+    "Question":"Which of the following is not immutable?",
+    "Option 1":"str",
+    "Option 2":"list",
+    "Option 3":"set",
+    "Option 4":"frozenset"
 }
 data6={
     id:6,
-    "answer":1
+    "answer":2
 }
  
 
@@ -180,11 +180,11 @@ data7={
 }
 var q8={
     "id":8,
-    "Question":"What method in Python is used to check whether the given object belongs to a class or its subclasses?",
-    "Option 1":"<isatty>",
-    "Option 2":"<object>",
-    "Option 3":"<isinstance>",
-    "Option 4":"<issubclass>"
+    "Question":"Which of the following data types doesn't allow duplicate values?",
+    "Option 1":"tuples",
+    "Option 2":"list",
+    "Option 3":"set",
+    "Option 4":"dictionary"
 }
 data8={
     id:8,
@@ -192,11 +192,11 @@ data8={
 }
 var q9={
     "id":9,
-    "Question":"Which two main modules would be used to monkeypatch closed entities inside functions in Python?",
-    "Option 1":"<monk,patchy>",
-    "Option 2":"<ast,inspect>",
-    "Option 3":"<zodiac,unittest>",
-    "Option 4":"<monk,diff-match-patch>"
+    "Question":"In computer world,Trojan refers to",
+    "Option 1":"virus",
+    "Option 2":"malware",
+    "Option 3":"worm",
+    "Option 4":"spyware"
 }
 data9={
     id:9,
@@ -309,11 +309,11 @@ data16={
 
 var q17={
 	"id":17,
-	"Question":"You want to create a ‘bytes’ object consisting of five null (0x00) bytes.All of the following will work except:",
-	"Option 1":"bytes(‘\x00\x00\x00\x00\x00’,’utf-8’)",
-	"Option 2":"bytes(5)",
-	"Option 3":"bytes([0]*5)",
-	"Option 4":"bytes(0,0,0,0,0)"
+	"Question":"Which data type is used to hold a key value store",
+	"Option 1":"Array",
+	"Option 2":"Linked list",
+	"Option 3":"stack",
+	"Option 4":"Dictionary"
 }
 data17={
 	id:17,
@@ -338,15 +338,15 @@ data18={
 
 var q19={
     "id":19,
-    "Question":"Which Of The Following Statements Is Most Accurate For The Declaration X = Circle()?",
-    "Option 1":"x contains an int value.",
-    "Option 2":"x contains an object of the Circle type.",
-    "Option 3":"x contains a reference to a Circle object.",
-    "Option 4":"You can assign an int value to x."
+    "Question":"Which Of The Following is the first search engine ?",
+    "Option 1":"Google",
+    "Option 2":"Archie",
+    "Option 3":"AltaVista",
+    "Option 4":"WAIS"
 }
 data19={
     id:19,
-    "answer":3
+    "answer":2
 }
 
 var q20={
