@@ -105,16 +105,16 @@ router.post('/resend',async(req,res)=>{
 
 //============================Forgot Password=================================================
 
-router.post('/forgotpassword',async(req,res)=>{
-    const email=req.body.email
-    try{
-        const user=await User.findOne({email})
-        console.log(user)
-    }catch(e){
-        res.status(400).send(e)
-    }
+// router.post('/forgotpassword',async(req,res)=>{
+//     const email=req.body.email
+//     try{
+//         const user=await User.findOne({email})
+//         console.log(user)
+//     }catch(e){
+//         res.status(400).send(e)
+//     }
     
-})
+// })
 
 router.post('/login',async(req,res)=>{
     try{
@@ -165,9 +165,8 @@ router.post('/technical',auth,(req,res)=>{
 
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
-            "question1":"How Loren ipsum 18 github link",
-            "question2":"How lorem ipsum 18 linked in link",
-            "quetsion3":"how lorem ipsum 18"
+            "question1":"Github Link!!",
+            "question2":"Tell us about a project that you are proud of.",
         }
         res.status(200).send(questions)
 
@@ -266,17 +265,21 @@ router.post('/management',auth,(req,res)=>{
     }
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
-            "question1":"How Loren ipsum 18",
-            "question2":"How lorem ipsum 18",
-            "quetsion3":"how lorem ipsum 18"
+            "question1":"If you have be a colour in the crayon set, which colour would you prefer to be and why?",
+            "question2":"On what basis will you pick up a leader when two of them are capable.",
+            "quetsion3":"Come up with a marketing strategy that would reach max people and at the same time is very innovative apart from using social media.",
+            "question4":" How will you manage the crowd given the venue has people from previous event already?",
+            "question5":"What’s the most creative/innovative thing you have done in the past that you are proud of and you feel it can help in chapter’s growth?"
         }
         res.status(200).send(questions)
 
     }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
         var questions={
-            "question1":"How Loren ipsum 19",
-            "question2":"How lorem ipsum 19",
-            "quetsion3":"how lorem ipsum 19"
+            "question1":"If you have be a colour in the crayon set, which colour would you prefer to be and why?",
+            "question2":"On what basis will you pick up a leader when two of them are capable.",
+            "quetsion3":"Come up with a marketing strategy that would reach max people and at the same time is very innovative apart from using social media.",
+            "question4":"If a board member instructs you to do something, would you do the task blindly?",
+            "question5":"Can you suggest an event that will be fun as well as have a technical side to it?"
         }
         res.status(200).send(questions)
     }else{
@@ -321,9 +324,11 @@ router.post('/design',auth,(req,res)=>{
 
     }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
         var questions={
-            "question1":"How Loren ipsum 19",
-            "question2":"How lorem ipsum 19",
-            "quetsion3":"how lorem ipsum 19"
+            "question1":"What design softwares do you know about ?",
+            "question2":"What is color harmony ?",
+            "quetsion3":"What is golden ratio ?",
+            "question4":"What is typography ?",
+            "question5":"What is the difference between UI and UX ?"
         }
         res.status(200).send(questions)
     }else{
@@ -360,6 +365,8 @@ router.post('/resetpassword',async(req,res)=>{
             pass:'Adgvit_2019'
         }
     })
+
+
 
     var mailOptions={
         from:process.env.EMAILID,
