@@ -317,7 +317,7 @@ router.post('/design',auth,(req,res)=>{
         var questions={
             "question1":"Tell us about yourself.",
             "question2":"Where do you go for UX inspiration",
-            "quetsion3":"What design softwares do you know about ?",
+            "question3":"What design softwares do you know about ?",
             "question4":"What is color harmony ?",
             "question5":"What is the difference between UI and UX ?"
         }
@@ -327,7 +327,7 @@ router.post('/design',auth,(req,res)=>{
         var questions={
             "question1":"What design softwares do you know about ?",
             "question2":"What is color harmony ?",
-            "quetsion3":"What is golden ratio ?",
+            "question3":"What is golden ratio ?",
             "question4":"What is typography ?",
             "question5":"What is the difference between UI and UX ?"
         }
