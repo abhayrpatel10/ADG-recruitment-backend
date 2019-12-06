@@ -173,7 +173,7 @@ router.post('/technical',auth,(req,res)=>{
 
     }else if(req.body.year==19 && Number(req.user.regno.slice(0,2))==19){
         var min = 0
-        var max = quest.length//replace with questions.length after questions added
+        var max = quest.length-1//replace with questions.length after questions added
 
         var random=[]
         while(random.length!=10){
@@ -184,7 +184,7 @@ router.post('/technical',auth,(req,res)=>{
         }
 
         var data=[]
-        for(var i=0;i<8;i++){
+        for(var i=0;i<10;i++){
             data.push(quest[random[i]])
         }
         console.log(data)
