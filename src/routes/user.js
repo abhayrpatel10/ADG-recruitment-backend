@@ -316,9 +316,11 @@ router.post('/design',auth,(req,res)=>{
     }
     if(req.body.year==18 && Number(req.user.regno.slice(0,2))==18){
         var questions={
-            "question1":"How Loren ipsum 18",
-            "question2":"How lorem ipsum 18",
-            "quetsion3":"how lorem ipsum 18"
+            "question1":"Tell us about yourself.",
+            "question2":"Where do you go for UX inspiration",
+            "quetsion3":"What design softwares do you know about ?",
+            "question4":"What is color harmony ?",
+            "question5":"What is the difference between UI and UX ?"
         }
         res.status(200).send(questions)
 
